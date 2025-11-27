@@ -1,0 +1,32 @@
+
+CREATE TABLE musteri_data (
+  id INTEGER,
+  ad TEXT,
+  cinsiyet TEXT,
+  ulke TEXT
+);
+
+INSERT INTO musteri_data VALUES (1, 'Ahmet', 'E', 'TR');
+INSERT INTO musteri_data VALUES (2, 'Ayşe', 'K', 'Turkey');
+INSERT INTO musteri_data VALUES (3, 'John', 'Male', 'USA');
+INSERT INTO musteri_data VALUES (4, 'Zeynep', NULL, 'tr');
+INSERT INTO musteri_data VALUES (5, 'ALİ', 'Erkek', 'Turkiye');
+
+
+SELECT 
+  UPPER(ad) AS Temiz_Isim,           
+  
+  CASE 
+    WHEN cinsiyet = 'E' THEN 'Male'
+    WHEN cinsiyet = 'Erkek' THEN 'Male'
+    WHEN cinsiyet = 'Male' THEN 'Male'
+    WHEN cinsiyet = 'K' THEN 'Female'
+    WHEN cinsiyet IS NULL THEN 'Unknown'
+    ELSE cinsiyet                      
+  END AS Temiz_Cinsiyet,          
+  UPPER(ulke) AS Temiz_Ulke         
+
+  
+FROM musteri_data;
+ 
+
